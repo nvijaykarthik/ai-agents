@@ -1,0 +1,37 @@
+#please add details for java, spring boot, maven, vscode, idea eclipse
+# Java
+*.class
+*.war
+*.ear
+*.jar
+*.zip
+*.tar.gz
+*.rar
+
+# Maven
+target/
+
+# Spring Boot
+*.log
+*.log.*
+*.tmp
+*.tmp.*
+
+# IDE
+.idea/
+.vscode/
+.classpath
+.project
+.settings/
+*.iml
+*.ipr
+*.iws
+*.bak
+*.swp
+*.cache
+*.out
+
+#mac
+.DS_Store
+.AppleDouble
+.LSOverride

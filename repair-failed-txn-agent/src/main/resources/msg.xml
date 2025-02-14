@@ -1,0 +1,67 @@
+<Document xmlns="urn:iso:std:iso:20022:tech:xsd:pacs.008.001.01">
+    <CstmrCdtTrfInitn>
+        <GrpHdr>
+            <MsgId>UniquePaymentID123</MsgId>
+            <CreDtTm>2023-10-26T10:30:00</CreDtTm>
+            <NbOfTxs>1</NbOfTxs>
+            <InitgPty>
+                <Nm>Acme Corporation</Nm>
+                <PstlAdr>
+                    <AdrLine>123 Main Street</AdrLine>
+                    <Ctry>US</Ctry>
+                </PstlAdr>
+            </InitgPty>
+        </GrpHdr>
+        <CdtTrfTxInf>
+            <PmtId>
+                <EndToEndId>PaymentRef1234</EndToEndId>
+            </PmtId>
+            <Amt>
+                <InstdAmt Ccy="USD">1000.00</InstdAmt>
+            </Amt>
+            <Cdtr>
+                <Nm>John Doe</Nm>
+                <Acct>
+                    <Id>
+                        <IBAN>US12345678901234567890</IBAN>
+                    </Id>
+                </Acct>
+            </Cdtr>
+            <Dbtr>
+                <Nm>Acme Corporation</Nm>
+                <Acct>
+                    <Id>
+                        <IBAN>US98765432101234567890</IBAN>
+                    </Id>
+                </Acct>
+            </Dbtr>
+            <RmtInf>
+                <Ustrd>Payment for services rendered</Ustrd>
+            </RmtInf>
+        </CdtTrfTxInf>
+        <customer>
+            <name>John Doe</name>
+            <address>123 Main Street</address>
+            <country>US</country>
+            <iban>US12345678901234567890</iban>
+        </customer>
+        <additionalDetails>
+            <name>Acme Corporation</name>
+            <customercountry>US</customercountry>
+            <customercategory>Corporate</customercategory>
+            <customerid>1234567890</customerid>
+        </additionalDetails>
+        <timestamp>
+            <date>2023-10-26</date>
+            <time>10:30:00</time>
+        </timestamp>
+        <failedReason>
+            <reason>Insufficient funds</reason>
+            <code>1001</code>
+        </failedReason>
+        <failedMessage>
+            <message>Payment for services Not rendered</message>
+            <code>1002</code>
+        </failedMessage>
+    </CstmrCdtTrfInitn>
+</Document>

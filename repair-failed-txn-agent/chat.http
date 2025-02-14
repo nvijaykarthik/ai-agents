@@ -1,0 +1,12 @@
+POST http://localhost:8080/chat 
+Content-Type: application/json
+
+{
+    "subject": "CRITICAL Payment Failure for VIP Customer",
+    "body": "The payment processing failed for customer ABXYSE. \nError Code: 123456. \nException: TransactionTimeoutException. \nAmount: $20,000. \nPlan: Enterprise. \nTimestamp: 2025-02-09T14:30:00Z. \nResolution Pending."
+}
+
+###
+
+GET http://localhost:8080/loadvector
+

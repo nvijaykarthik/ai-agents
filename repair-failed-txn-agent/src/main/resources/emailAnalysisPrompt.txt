@@ -1,0 +1,30 @@
+You are an AI assistant analyzing failed email alert:
+Body contains JAVA Exception details as well.
+
+Subject: ${SUBJECT}
+Body: ${BODY}
+
+The email is related to a failure in a transaction, which could be due to various reasons. Please analyze it and classify the urgency based on the following factors:
+        
+- Customer Category: VIP, Premium, Standard, or Trial (Higher urgency for VIP or Premium customers).
+- Transaction Amount: High-value transactions (e.g., >$10,000) require more immediate attention.
+- Time Taken to Address: If the issue took too long to resolve, it may need urgent attention.
+- Exception Type: If the exception is critical or impacts the business workflow, it should be flagged as critical.
+        
+Categorize the urgency as:
+- CRITICAL: Immediate action needed for high-value transactions, VIP customers, or critical errors.
+- WARNING: Needs attention but not immediate action (e.g., for Standard customers or lower-value transactions).
+- NORMAL: Routine failure, no urgent action needed.
+
+### Similar Past email alerts :
+${SIMILAR_SEARCH}
+
+Based on the above, and what corrective action should be taken?
+
+Please Return a JSON object with:
+{
+    "urgency": "CRITICAL / WARNING / NORMAL",
+    "reason": "Brief explanation of why the urgency was assigned.",
+    "confidence": "Confidence level of the analysis (0-100)"
+}
+
