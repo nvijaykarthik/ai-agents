@@ -5,6 +5,8 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.ai.document.Document;
+import org.springframework.ai.transformer.splitter.TextSplitter;
+import org.springframework.ai.transformer.splitter.TokenTextSplitter;
 import org.springframework.ai.vectorstore.SearchRequest;
 import org.springframework.ai.vectorstore.VectorStore;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,20 +18,20 @@ public class VectorService {
     @Autowired
     VectorStore vectorStore;
 
-    public Document createDocument(String failedMessage, String analysisDetails, String actionTaken) {
+    public List<Document> createDocument(String failedMessage, String analysisDetails, String actionTaken) {
         // Store metadata (useful for filtering)
         Map<String, Object> metadata = new HashMap<>();
         metadata.put("analysisDetails", analysisDetails);
         metadata.put("actionTaken", actionTaken);
-
-
+        TextSplitter splitter= TokenTextSplitter.builder().withChunkSize(512).build();
+        List<Document> docs=splitter.split(new Document(failedMessage, metadata));
         // Create the document (subject + body as content)
-        return new Document(failedMessage, metadata);
+        return docs;
     }
     
      public void storeTransaction(String failedMessage, String analysisDetails, String actionTaken) {
-        Document doc = createDocument(failedMessage,  analysisDetails,  actionTaken);
-        vectorStore.add(List.of(doc));
+        List<Document> docs= createDocument(failedMessage,  analysisDetails,  actionTaken);
+        vectorStore.add(docs);
     }
     
     public List<Document> searchSimilarEmail(String query) {

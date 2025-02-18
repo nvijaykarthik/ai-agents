@@ -14,7 +14,7 @@ public class StoreService {
     VectorStore vectorStore;
 
     public void storeTransaction(String failedMessage, String analysisDetails, String actionTaken) {
-        Document doc = TransactionService.createDocument(failedMessage,  analysisDetails,  actionTaken);
-        vectorStore.add(List.of(doc));
+        List<Document> docs = TransactionService.createDocument(failedMessage,  analysisDetails,  actionTaken);
+        vectorStore.add(docs);
     }
 }
